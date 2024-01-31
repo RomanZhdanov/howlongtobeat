@@ -7,6 +7,8 @@ namespace HowLongToBeat
 
     public class Game
     {
+        [JsonProperty("game_id")]
+        public int Id { get; set; }
         [JsonProperty("game_name")]
         public string Title { get; }
         [JsonProperty("game_image"), JsonConverter(typeof(ImageURLConverter))]
@@ -17,6 +19,10 @@ namespace HowLongToBeat
         public string MainAndExtras { get; }
         [JsonProperty("comp_100"), JsonConverter(typeof(TimeConverter))]
         public string Completionist { get; }
+        [JsonProperty("release_world")]
+        public int ReleaseYear { get; set; }
+
+        public string TitleWithYear => $"{Title} ({ReleaseYear})";
 
         public Game(string title, string main, string mainandextras, string completionist, string imgURL)
         {
